@@ -1,38 +1,27 @@
 package com.tuusuario.miconsole;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-/**
- * Unit test for simple App.
- */
+import com.google.gson.Gson;
+import org.apache.commons.lang3.StringUtils;
+
 public class AppTest 
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
+    @Test
+    public void testTrimText()
     {
-        super( testName );
+        String texto = "   hola mundo   ";
+        String resultado = StringUtils.trim(texto);
+        assertEquals("hola mundo", resultado);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
+    @Test
+    public void testPersonaJson()
     {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+        Persona persona = new Persona("Prueba", 25);
+        String json = new Gson().toJson(persona);
+        assertTrue(json.contains("Prueba"));
+        assertTrue(json.contains("25"));
     }
 }
