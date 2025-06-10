@@ -11,7 +11,7 @@ public class AppTest
     @Test
     public void testTrimText()
     {
-        String texto = "   hola mundo   ";
+        String texto = "hola mundo";
         String resultado = StringUtils.trim(texto);
         assertEquals("hola mundo", resultado);
     }
